@@ -1,6 +1,6 @@
 {
-    "name": "bluesquare/validator",
-    "description": "Valitor create by Bluesquare Computing",
+    "name": "bluesquare-packages/symfony-validator",
+    "description": "Validator creatde by Bluesquare Computing",
     "keywords": ["template", "composer", "package"],
     "license": "proprietary",
     "authors": [
