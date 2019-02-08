@@ -1,0 +1,21 @@
+{
+    "name": "bluesquare/validator",
+    "description": "Valitor create by Bluesquare Computing",
+    "keywords": ["template", "composer", "package"],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "RENOU Maxime",
+            "email": "maxime@bluesquare.io"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bluesquare\\Validator\\": "src/"
+        }
+    }
+}
