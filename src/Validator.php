@@ -2,12 +2,13 @@
 
 namespace Bluesquare;
 
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Traversable;
 
-class Validator
+class Validator extends ServiceEntityRepository
 {
     protected $request;
     protected $context;
