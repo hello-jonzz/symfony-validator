@@ -2,3 +2,6 @@ services:
   _default:
     autowire: true
     autoconfigure: true
+  Bluesquare\Validator:
+    class: Bluesquare\Validator
+    arguments: ['@request_stack', '@translator_interface']
