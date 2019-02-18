@@ -4,4 +4,4 @@ services:
     autoconfigure: true
   Bluesquare\Validator:
     class: Bluesquare\Validator
-    arguments: ['@request_stack', '@translator_interface']
+    arguments: ['@request_stack'']
