@@ -9,7 +9,7 @@
             "email": "maxime@bluesquare.io"
         }
     ],
-    "type": "project",
+    "type": "symfony-bundle",
     "require": {
 		"php": ">=7.1"
     },
