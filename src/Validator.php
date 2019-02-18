@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utils;
+namespace Bluesquare;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
