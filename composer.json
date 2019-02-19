@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Bluesquare\\": "ValidatorBundle/"
+            "Bluesquare\\ValidatorBundle\\": "ValidatorBundle/"
         }
     }
 }
