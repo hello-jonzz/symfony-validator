@@ -4,4 +4,5 @@ services:
     autoconfigure: true
   Bluesquare\Validator:
     class: Bluesquare\Validator
+    autowire: true
     arguments: ['@request_stack'']
