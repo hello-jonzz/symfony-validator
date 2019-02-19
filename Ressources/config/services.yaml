@@ -2,8 +2,4 @@ services:
   _default:
     autowire: true
     autoconfigure: true
-  Bluesquare\Validator:
-    class: Bluesquare\ValidatorBundle
-    autowire: true
-    autoconfigure: true
-    arguments: ['@symfony/request-stack']
+    public: false
