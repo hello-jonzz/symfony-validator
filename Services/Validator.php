@@ -1,14 +1,11 @@
 <?php
 
-namespace Bluesquare;
+namespace Bluesquare\ValidatorBundle\Services;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Traversable;
 
-class ValidatorBundle extends Bundle
+class Validator
 {
     protected $request;
     protected $context;
