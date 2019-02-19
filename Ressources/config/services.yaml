@@ -5,4 +5,5 @@ services:
   Bluesquare\Validator:
     class: Bluesquare\ValidatorBundle
     autowire: true
-    arguments: ['@request_stack']
+    autoconfigure: true
+    arguments: ['@symfony/request-stack']

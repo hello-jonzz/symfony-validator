@@ -2,12 +2,16 @@
 
 namespace Bluesquare;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Config\FileLocator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Traversable;
 
-class ValidatorBundle
+class ValidatorBundle extends Extension
 {
     protected $request;
     protected $context;
@@ -439,5 +443,16 @@ class ValidatorBundle
         $string = implode('_', explode('-', $string));
         $words = array_map('ucfirst', explode('_', $string));
         return implode('', $words);
+    }
+
+    /**
+     * Loads a specific configuration.
+     *
+     * @throws \InvalidArgumentException When provided tag is not defined in this extension
+     */
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '../Ressources/config'));
+        $loader->load('services.yaml');
     }
 }
