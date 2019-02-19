@@ -3,6 +3,6 @@ services:
     autowire: true
     autoconfigure: true
   Bluesquare\Validator:
-    class: Bluesquare\Validator
+    class: Bluesquare\ValidatorBundle
     autowire: true
     arguments: ['@request_stack']
