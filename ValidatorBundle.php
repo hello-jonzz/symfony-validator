@@ -2,13 +2,15 @@
 
 namespace Bluesquare;
 
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Traversable;
 
-class Validator extends Bundle
+class ValidatorBundle extends Extension
 {
     protected $request;
     protected $context;
@@ -29,7 +31,7 @@ class Validator extends Bundle
         $this->translator = $translator;
         $this->request = $requestStack->getCurrentRequest();
 
-        $session = $this->request->getSession()->getFlashBag()->get("Bluesquare:Validator");
+        $session = $this->request->getSession()->getFlashBag()->get("Bluesquare:ValidatorBundle");
 
         if(is_array($session) && isset($session[0])) {
             if(isset($session[0]['context'])) $this->context = $session[0]['context'];
@@ -100,7 +102,7 @@ class Validator extends Bundle
             'values' => $this->values,
             'context' => $this->context
         ];
-        $this->request->getSession()->getFlashBag()->add('Bluesquare:Validator', $data);
+        $this->request->getSession()->getFlashBag()->add('Bluesquare:ValidatorBundle', $data);
         return $this;
     }
 
@@ -440,5 +442,16 @@ class Validator extends Bundle
         $string = implode('_', explode('-', $string));
         $words = array_map('ucfirst', explode('_', $string));
         return implode('', $words);
+    }
+
+    /**
+     * Loads a specific configuration.
+     *
+     * @throws \InvalidArgumentException When provided tag is not defined in this extension
+     */
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
     }
 }
