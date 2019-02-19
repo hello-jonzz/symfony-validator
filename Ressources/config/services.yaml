@@ -3,3 +3,4 @@ services:
     autowire: true
     autoconfigure: true
     public: false
+    tags: ['controller.service_arguments']
