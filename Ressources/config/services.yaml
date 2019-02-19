@@ -5,4 +5,4 @@ services:
   Bluesquare\Validator:
     class: Bluesquare\Validator
     autowire: true
-    arguments: ['@request_stack'']
+    arguments: ['@request_stack']
