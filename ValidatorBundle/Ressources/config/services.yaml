@@ -3,5 +3,5 @@ services:
     class: Bluesquare\ValidatorBundle\Validator
     autowire: true
     public: true
-    arguments: ['@request_stack', '@translator.data_collector']
+    arguments: ['@request_stack', '@translator']
   Bluesquare\ValidatorBundle\Validator: '@bluesquare.validator'

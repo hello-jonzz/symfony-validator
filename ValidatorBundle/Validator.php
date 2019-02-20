@@ -131,7 +131,7 @@ class Validator
 
     public function message()
     {
-        $result = $this->failed() ? 'form-error' : 'form-success';
+        $result = $this->failed() ? 'form_error' : 'form_success';
         $message = null;
         if (!is_null($this->context)) {
             $message = $this->translator->trans("$this->context.$result", [], "validator");
@@ -241,10 +241,10 @@ class Validator
 
         switch ($name)
         {
-            case 'required-file':
+            case 'required_file':
                 $success = $this->hasFile($field);
                 break;
-            case 'required-files':
+            case 'required_files':
                 $success = $this->hasFiles($field);
                 break;
             case 'required':
@@ -283,7 +283,7 @@ class Validator
                 $_pattern = "%^((?:(?:https?|ftp)://))?(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]-*)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]-*)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$%iuS";
                 $success = preg_match($_pattern, $value);
                 break;
-            case 'inArray':
+            case 'in_array':
                 $success = in_array($value, $data['values']);
                 break;
             case 'min':
@@ -292,11 +292,14 @@ class Validator
             case 'max':
                 $success = max($value, $data['length']) == $value ? true : false;
                 break;
-            case 'minLength':
-                $success = strlen($value) < $data['min-length'] ? true : false;
+            case 'min_length':
+                $success = strlen($value) >= $data['length'] ? true : false;
                 break;
-            case 'maxLength':
-                $success = strlen($value) > $data['min-length'] ? true : false;
+            case 'max_length':
+                $success = strlen($value) <= $data['length'] ? true : false;
+                break;
+            case 'identical':
+                $success = $value == $this->get($data['target']);
                 break;
             // (éwé c'est un switch)
         }
@@ -390,13 +393,13 @@ class Validator
 
     public function requiredFile($name)
     {
-        $this->rule($name, 'required-file');
+        $this->rule($name, 'required_file');
         return $this;
     }
 
     public function requiredFiles($name)
     {
-        $this->rule($name, 'required-files');
+        $this->rule($name, 'required_files');
         return $this;
     }
 
@@ -414,19 +417,25 @@ class Validator
 
     public function minLength($field, $length)
     {
-        $this->rule($field, 'min-length', ['length' => $length]);
+        $this->rule($field, 'min_length', ['length' => $length]);
         return $this;
     }
 
     public function maxLength($field, $length)
     {
-        $this->rule($field, 'max-length', ['length' => $length]);
+        $this->rule($field, 'max_length', ['length' => $length]);
         return $this;
     }
 
     public function inArray($field, $values)
     {
-        $this->rule($field, 'inArray', ['values' => $values]);
+        $this->rule($field, 'in_array', ['values' => $values]);
+        return $this;
+    }
+
+    public function identical($field, $field_confirm)
+    {
+        $this->rule($field_confirm, 'identical', ['target' => $field]);
         return $this;
     }
 
