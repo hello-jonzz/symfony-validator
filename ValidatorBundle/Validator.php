@@ -1,6 +1,6 @@
 <?php
 
-namespace Bluesquare\ValidatorBundle\Services;
+namespace Bluesquare\ValidatorBundle;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
