@@ -202,7 +202,7 @@ class Validator
 
         foreach ($args as $field) {
             $method = "set".$this->camelize($field);
-            if (method_exists($entity, $method)) $entity->$method($this->value($field));
+            if (method_exists($entity, $method)) $entity->$method($this->get($field));
         }
 
         return true;
