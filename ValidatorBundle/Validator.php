@@ -219,7 +219,6 @@ class Validator
         $attribute = $args[0];
         $storage = $args[1];
 
-        // handle
         if (!$this->hasFile($attribute))
         {
             $this->error($attribute, 'required');
@@ -235,6 +234,7 @@ class Validator
                 $this->error($attribute, 'file_mime_type');
             }
         }
+
         return false;
     }
 
