@@ -2,6 +2,8 @@
 
 namespace Bluesquare\ValidatorBundle;
 
+use Bluesquare\StorageBundle\Exceptions\MimeTypeException;
+use Bluesquare\StorageBundle\Storage;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -204,6 +206,36 @@ class Validator
         }
 
         return true;
+    }
+
+    public function injectFile()
+    {
+        $args = func_get_args();
+        if (count($args) === 0) return false;
+        if (is_object($args[0])) $entity = array_shift($args);
+        else $entity = $this->entity;
+
+        if (is_null($entity) || count($args) != 2) return false;
+        $attribute = $args[0];
+        $storage = $args[1];
+
+        // handle
+        if (!$this->hasFile($attribute))
+        {
+            $this->error($attribute, 'required');
+            return false;
+        }
+
+        if ($storage instanceof Storage)
+        {
+            try {
+                return $storage->store($entity, $attribute, $this->getFile($attribute));
+            }
+            catch(MimeTypeException $exception) {
+                $this->error($attribute, 'file_mime_type');
+            }
+        }
+        return false;
     }
 
     //

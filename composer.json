@@ -12,7 +12,8 @@
     "type": "symfony-bundle",
     "require": {
 		"php": ">=7.1",
-        "symfony/translation": "^4.2"
+        "symfony/translation": "^4.2",
+        "bluesquare-packages/symfony-storage": "dev-master"
     },
     "autoload": {
         "psr-4": {
