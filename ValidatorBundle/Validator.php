@@ -6,6 +6,7 @@ use Bluesquare\StorageBundle\Exceptions\MimeTypeException;
 use Bluesquare\StorageBundle\Storage;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class Validator
 {
@@ -172,7 +173,16 @@ class Validator
 
     public function checked($field)
     {
-        return !is_null($this->get($field)) || $this->get($field) != '0' || $this->get($field) != 0;
+        return $this->post() ? (
+            !is_null($this->get($field))
+        ) : (
+            !is_null($this->value($field)) && $this->value($field) != 0 && $this->value($field) != false
+        );
+    }
+
+    public function isChecked($field)
+    {
+        return $this->has($field);
     }
 
     public function getFile($name)
