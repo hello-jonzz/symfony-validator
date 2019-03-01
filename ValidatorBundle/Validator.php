@@ -87,13 +87,13 @@ class Validator
         foreach ($this->errors as $field => $field_errors)
         {
             $errors[$field] = [
-                'error' => "validator.".$field_errors[0].(!is_null($this->context) ? ':'.$this->context : '')
+                'error' => "validator.".$field_errors[0].':'.$field.(!is_null($this->context) ? ':'.$this->context : '')
             ];
         }
 
         $data = array_merge([
             'message' => 'Please check your input',
-            'error' => 'validator.form-error',
+            'error' => "validator.form-error".(!is_null($this->context) ? ':'.$this->context : ''),
             'errors' => $errors
         ], $data);
 
