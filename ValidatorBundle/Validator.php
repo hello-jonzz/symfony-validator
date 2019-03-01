@@ -84,10 +84,10 @@ class Validator
     {
         $errors = [];
 
-        foreach ($this->errors as $field => $error)
+        foreach ($this->errors as $field => $field_errors)
         {
             $errors[$field] = [
-                'error' => "validator.".$errors[0].(!is_null($this->context) ? ':'.$this->context : '')
+                'error' => "validator.".$field_errors[0].(!is_null($this->context) ? ':'.$this->context : '')
             ];
         }
 
