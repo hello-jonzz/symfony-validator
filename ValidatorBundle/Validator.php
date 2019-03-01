@@ -82,12 +82,19 @@ class Validator
 
     public function json($code = 400, $data = [])
     {
+        $errors = [];
+
+        foreach ($this->errors as $field => $error)
+        {
+            $errors[$field] = [
+                'error' => "validator.".$errors[0].(!is_null($this->context) ? ':'.$this->context : '')
+            ];
+        }
+
         $data = array_merge([
             'message' => 'Please check your input',
             'error' => 'validator.form-error',
-            'errors' => array_map(function ($errors) {
-                return "validator.".$errors[0].(!is_null($this->context) ? ':'.$this->context : '');
-            }, $this->errors)
+            'errors' => $errors
         ], $data);
 
         return new JsonResponse($data, $code);
