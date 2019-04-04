@@ -174,7 +174,7 @@ class Validator
     public function get($field, $default = null)
     {
         $value = isset($this->values[$field]) ? trim($this->values[$field]) : $default;
-        if (empty($value)) $value = $default;
+        if (strlen($value) == 0) $value = $default;
         return $value;
     }
 
