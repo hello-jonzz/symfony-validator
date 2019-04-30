@@ -300,16 +300,16 @@ class Validator
                 $success = !(is_null($value));
                 break;
             case 'integer':
-                $success = (filter_var($value, FILTER_VALIDATE_INT) ? true : false);
+                $success = (filter_var($value, FILTER_VALIDATE_INT) !== false);
                 break;
             case 'float':
-                $success = (filter_var($value, FILTER_VALIDATE_FLOAT) ? true : false);
+                $success = (filter_var($value, FILTER_VALIDATE_FLOAT) !== false);
                 break;
             case 'boolean':
-                $success = (filter_var($value, FILTER_VALIDATE_BOOLEAN) ? true : false);
+                $success = (filter_var($value, FILTER_VALIDATE_BOOLEAN) !== false);
                 break;
             case 'email':
-                $success = (filter_var($value, FILTER_VALIDATE_EMAIL) ? true : false);
+                $success = (filter_var($value, FILTER_VALIDATE_EMAIL) !== false);
                 break;
             case 'phone':
                 $_pattern = "/^\+?\d{7,15}$/";
