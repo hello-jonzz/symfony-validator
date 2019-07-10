@@ -273,7 +273,8 @@ class Validator
     {
         foreach ($this->rules as $field => $rules)
         {
-            foreach ($rules as $rule) $this->test($field, $rule);
+            $nullable = !in_array('required', $rules) && !in_array('required_file', $rules) && !in_array('required_files', $rules);
+            foreach ($rules as $rule) $this->test($field, $rule, $nullable);
         }
 
         $this->validated = true;
@@ -281,7 +282,7 @@ class Validator
         return (count($this->errors) == 0);
     }
 
-    public function test($field, $rule)
+    public function test($field, $rule, $nullable = false)
     {
         $name = $rule['rule'];
         $data = $rule['data'];
@@ -353,7 +354,11 @@ class Validator
             // (éwé c'est un switch)
         }
 
-        if (!$success) {
+        if (!$success)
+        {
+            if ($nullable && empty($value))
+                return true;
+
             $this->error($field, $name);
         }
 
