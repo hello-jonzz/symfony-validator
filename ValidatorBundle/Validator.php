@@ -273,7 +273,8 @@ class Validator
     {
         foreach ($this->rules as $field => $rules)
         {
-            $nullable = !in_array('required', $rules) && !in_array('required_file', $rules) && !in_array('required_files', $rules);
+          	$rules_names = array_map(function($rule) { return $rule['rule']; }, $rules);
+            $nullable = !in_array('required', $rules_names) && !in_array('required_file', $rules_names) && !in_array('required_files', $rules_names);
             foreach ($rules as $rule) $this->test($field, $rule, $nullable);
         }
 
