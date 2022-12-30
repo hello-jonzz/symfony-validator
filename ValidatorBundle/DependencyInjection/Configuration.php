@@ -17,8 +17,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('validator');
+        $treeBuilder = new TreeBuilder('validator');
         return ($treeBuilder);
     }
 }

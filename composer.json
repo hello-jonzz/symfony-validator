@@ -12,7 +12,7 @@
     "type": "symfony-bundle",
     "require": {
 		"php": ">=7.1",
-        "symfony/translation": "^4.2||^5.0",
+        "symfony/translation": "^4.2||^5.0||^5.4",
         "hello-jonzz/symfony-storage": "1.*"
     },
     "autoload": {
