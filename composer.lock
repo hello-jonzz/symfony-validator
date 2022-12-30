@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad5118c44a9d78ad9ed065ceb20b1e46",
+    "content-hash": "522bb4c65aad772e2514e7fe55195358",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -574,7 +574,7 @@
         },
         {
             "name": "hello-jonzz/symfony-storage",
-            "version": "dev-master",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hello-jonzz/symfony-storage.git",
@@ -591,7 +591,6 @@
                 "doctrine/event-manager": "*",
                 "php": ">=7.1"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
@@ -1297,9 +1296,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "hello-jonzz/symfony-storage": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

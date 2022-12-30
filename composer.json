@@ -13,7 +13,7 @@
     "require": {
 		"php": ">=7.1",
         "symfony/translation": "^4.2||^5.0",
-        "hello-jonzz/symfony-storage": "dev-master"
+        "hello-jonzz/symfony-storage": "1.*"
     },
     "autoload": {
         "psr-4": {
