@@ -1,19 +1,19 @@
 {
-    "name": "bluesquare-packages/symfony-validator",
-    "description": "Validator created by Bluesquare Computing",
+    "name": "hello-jonzz/symfony-validator",
+    "description": "---",
     "keywords": ["template", "composer", "package"],
     "license": "proprietary",
     "authors": [
         {
-            "name": "RENOU Maxime",
-            "email": "maxime@bluesquare.io"
+            "name": "Mohamed A.",
+            "email": "mohamed@hello-pomelo.com"
         }
     ],
     "type": "symfony-bundle",
     "require": {
 		"php": ">=7.1",
-        "symfony/translation": "^4.2",
-        "bluesquare-packages/symfony-storage": "dev-master"
+        "symfony/translation": "^4.2||^5.0",
+        "hello-jonzz/symfony-storage": "dev-master"
     },
     "autoload": {
         "psr-4": {
